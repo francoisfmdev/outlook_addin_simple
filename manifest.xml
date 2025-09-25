@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp"
+           Version="1.0.0.0" ProviderName="You" DefaultLocale="fr-FR">
+  <Id>c1caa6c2-1b3a-4b9a-9a7f-000000000001</Id>
+  <DisplayName DefaultValue="Demo Outlook Add-in Simple" />
+  <Description DefaultValue="Add-in minimal avec bouton vide" />
+  <IconUrl DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/assets/icon-32.png"/>
+  <SupportUrl DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/"/>
+
+  <Hosts><Host Name="Mailbox"/></Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.1"><Set Name="Mailbox"/></Sets>
+  </Requirements>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="grpDemo" label="Demo Add-in">
+                <Control xsi:type="Button" id="btnOpenPane">
+                  <Label resid="lblOpenPane"/>
+                  <Icon>
+                    <bt:Image size="16" resid="ico16"/>
+                    <bt:Image size="32" resid="ico32"/>
+                    <bt:Image size="80" resid="ico80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="ico16" DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/assets/icon-16.png"/>
+        <bt:Image id="ico32" DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/assets/icon-32.png"/>
+        <bt:Image id="ico80" DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="taskpaneUrl" DefaultValue="https://francoisfmdev.github.io/outlook_addin_simple/web/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="lblOpenPane" DefaultValue="Ouvrir le panneau"/>
+      </bt:ShortStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
